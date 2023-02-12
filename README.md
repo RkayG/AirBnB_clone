@@ -2,21 +2,21 @@
   <img src="https://github.com/RkayG/AirBnB_clone/blob/master/assets/hbnb_logo.png" alt="AirBnB logo">
 </p>
 
-<h1 align="center">AirBnB</h1>
+<h1 align="center">AirBnB_clone</h1>
 <p align="center">An AirBnB clone.</p>
 
 ---
 
 ## Description :house:
 
-AirBnB is a complete web application, integrating database storage, 
+AirBnB_clone is a complete web application, integrating database storage, 
 a back-end API, and front-end interfacing in a clone of AirBnB.
 
 The project currently only implements the back-end console.
 
 ## Classes :cl:
 
-AirBnB utilizes the following classes:
+AirBnB_clone utilizes the following classes:
 
 |     | BaseModel | FileStorage | User | State | City | Amenity | Place | Review |
 | --- | --------- | ----------- | -----| ----- | -----| ------- | ----- | ------ |
@@ -44,7 +44,7 @@ the application (achieved by calls on the `storage` object defined above).
 
 ### Using the Console
 
-The AirBnB console can be run both interactively and non-interactively. 
+The AirBnB_clone console can be run both interactively and non-interactively. 
 To run the console in non-interactive mode, pipe any command(s) into an execution 
 of the file `console.py` at the command line.
 
@@ -90,7 +90,7 @@ $
 
 ### Console Commands
 
-The AirBnB console supports the following commands:
+The AirBnB_clone console supports the following commands:
 
 * **create**
   * Usage: `create <class>`
