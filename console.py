@@ -5,6 +5,8 @@ Module - console
 command interpreter
 """
 import cmd
+import re
+from shlex import split
 from models.base_model import BaseModel
 from models.user import User
 from models.city import City
@@ -13,6 +15,24 @@ from models.amenity import Amenity
 from models.review import Review
 from models.state import State
 from models import storage
+
+
+def parse(arg):
+    curly_braces = re.search(r"\{(.*?)\}", arg)
+    brackets = re.search(r"\[(.*?)\]", arg)
+    if curly_braces is None:
+        if brackets is None:
+            return [i.strip(",") for i in split(arg)]
+        else:
+            lexer = split(arg[:brackets.span()[0]])
+            retl = [i.strip(",") for i in lexer]
+            retl.append(brackets.group())
+            return retl
+    else:
+        lexer = split(arg[:curly_braces.span()[0]])
+        retl = [i.strip(",") for i in lexer]
+        retl.append(curly_braces.group())
+        return retl
 
 
 class HBNBCommand(cmd.Cmd):
@@ -131,25 +151,32 @@ class HBNBCommand(cmd.Cmd):
         :param line:
         :return:
         """
-        args = line.split()
-        if len(line) >= 4:
+        args = parse(line)
+
+        if len(args) >= 4:
             obj = storage.all()["{}.{}".format(args[0], args[1])]
             cast = type(args[3])
             attrib_value = cast(args[3])
             setattr(obj, args[2], attrib_value)
             obj.save()
-        elif len(line) == 0:
+        elif len(args) == 0:
             print("** class name missing **")
+            return False
         elif args[0] not in self.classes.keys():
             print("** class doesn't exist **")
+            return False
         elif len(args) == 1:
             print("** instance id missing **")
+            return False
         elif ("{}.{}".format(args[0], args[1])) not in storage.all().keys():
             print("** no instance found **")
+            return False
         elif len(args) == 2:
             print("** attribute name missing **")
+            return False
         else:
             print("** value missing **")
+            return False
 
     def do_count(self, line):
         if line in self.classes:
