@@ -1,0 +1,31 @@
+/*
+ * === Filters class style ===
+ */
+ 
+ /* places articles*/
+ .articles {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+ /* places header1 */
+ .places h1 {
+     font-size:30px;
+     text-align: left;
+ }
+ /*  article under class "articles" */
+ .articles article {
+     width: 390px;
+     padding: 20px;
+     margin: 20px;
+     border: 1px solid #FF5A5F;
+     border-radius: 4px;
+     display: inline-block;
+ }
+ /* articles article header2 */
+ .articles article h2 {
+     font-size: 30px;
+     text-align: center;
+ }
